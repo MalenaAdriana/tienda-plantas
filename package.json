@@ -1,0 +1,13 @@
+{
+  "name": "tienda-plantas",
+  "version": "1.0.0",
+  "description": "Proyecto simple de tienda de plantas con carrito y base de datos de pedidos",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "sqlite3": "^5.1.7"
+  }
+}

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vivero Malena</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="nav-principal">
+    <div class="nav-logo">Vivero Malena</div>
+    <div class="nav-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#productos">Productos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+
+  <!-- ENCABEZADO -->
+  <header class="encabezado" id="inicio">
+    <h1>Vivero Malena</h1>
+    <p class="subtitulo">Venta de plantas🌿</p>
+  </header>
+
+  <!-- BANNER -->
+  <section class="banner">
+    <div class="banner-texto">
+      <h2>Tu rincón verde </h2>
+      <p>
+        Elegí entre rosas, cactus, suculentas, aromáticas y plantas de interior.
+        Armé esta web como proyecto de programación, combinando código y plantas 🌱.
+      </p>
+      <a href="#productos" class="banner-boton">Ver productos</a>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="sobre" id="sobre">
+    <h2>Sobre Vivero Malena</h2>
+    <p>
+      Vivero Malena nace como un proyecto personal, mezclando mi gusto por las plantas
+      con lo que fui aprendiendo en programación.
+    </p>
+    <p>
+      Los productos están cargados a mano y el sistema guarda los pedidos 
+      para poder organizarlos mejor.
+    </p>
+  </section>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main id="productos">
+
+    <!-- CONTENEDOR: PRODUCTOS + CARRITO -->
+    <div class="contenedor">
+
+      <!-- PRODUCTOS -->
+      <section class="productos">
+
+        <h2>Plantas disponibles</h2>
+
+        <!-- Filtros -->
+        <div class="filtros">
+          <button class="btn-filtro activo" data-filtro="todos">Todos</button>
+          <button class="btn-filtro" data-filtro="rosas">Rosas</button>
+          <button class="btn-filtro" data-filtro="cactus">Cactus</button>
+          <button class="btn-filtro" data-filtro="suculentas">Suculentas</button>
+          <button class="btn-filtro" data-filtro="aromaticas">Aromáticas</button>
+          <button class="btn-filtro" data-filtro="interior">Interior</button>
+        </div>
+
+        <!-- LISTA DE PRODUCTOS -->
+        <div class="lista-productos">
+
+          <!-- Producto 1 -->
+          <article class="tarjeta-producto" data-id="1" data-nombre="Rosa rosada" data-precio="3500" data-categoria="rosas">
+            <img src="img/rosa-rosada.jpg" alt="Rosa rosada" />
+            <h3>Rosa rosada</h3>
+            <p class="descripcion">Rosa en tono pastel rosado, ideal para balcones y jardines pequeños.</p>
+            <p class="precio">$3500</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 2 -->
+          <article class="tarjeta-producto" data-id="2" data-nombre="Rosa blanca" data-precio="3800" data-categoria="rosas">
+            <img src="img/rosa-blanca.jpg" alt="Rosa blanca" />
+            <h3>Rosa blanca</h3>
+            <p class="descripcion">Rosa blanca de flor grande, queda bien en maceta o cantero.</p>
+            <p class="precio">$3800</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 3 -->
+          <article class="tarjeta-producto" data-id="3" data-nombre="Cactus pequeño" data-precio="2200" data-categoria="cactus">
+            <img src="img/cactus.jpg" alt="Cactus pequeño" />
+            <h3>Cactus pequeño</h3>
+            <p class="descripcion">Cactus fácil de cuidar, aguanta olvidos de riego.</p>
+            <p class="precio">$2200</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 4 -->
+          <article class="tarjeta-producto" data-id="4" data-nombre="Suculenta pastel" data-precio="2500" data-categoria="suculentas">
+            <img src="img/sucu.jpg" alt="Suculenta pastel" />
+            <h3>Suculenta pastel</h3>
+            <p class="descripcion">Ideal para interiores, casi no requiere riego. Tonos verdes suaves.</p>
+            <p class="precio">$2500</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 5 -->
+          <article class="tarjeta-producto" data-id="5" data-nombre="Lavanda" data-precio="4200" data-categoria="aromaticas">
+            <img src="img/lavanda.jpg" alt="Lavanda" />
+            <h3>Lavanda</h3>
+            <p class="descripcion">Aromática con flores lilas, sumamente perfumada.</p>
+            <p class="precio">$4200</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 6 -->
+          <article class="tarjeta-producto" data-id="6" data-nombre="Potus corazón" data-precio="3000" data-categoria="interior">
+            <img src="img/potus.jpg" alt="Potus corazón" />
+            <h3>Potus corazón</h3>
+            <p class="descripcion">Planta colgante fácil de cuidar, ideal para interiores.</p>
+            <p class="precio">$3000</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 7 -->
+          <article class="tarjeta-producto" data-id="7" data-nombre="Cactus oreja de Mickey" data-precio="2800" data-categoria="cactus">
+            <img src="img/cactus-mickey.jpg" alt="Cactus oreja de Mickey" />
+            <h3>Cactus oreja de Mickey</h3>
+            <p class="descripcion">Cactus en forma de orejas, muy resistente y decorativo.</p>
+            <p class="precio">$2800</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 8 -->
+          <article class="tarjeta-producto" data-id="8" data-nombre="Menta" data-precio="2000" data-categoria="aromaticas">
+            <img src="img/menta.jpg" alt="Menta" />
+            <h3>Menta</h3>
+            <p class="descripcion">Aromática fresca ideal para infusiones y decoración.</p>
+            <p class="precio">$2000</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 9 -->
+          <article class="tarjeta-producto" data-id="9" data-nombre="Romero" data-precio="2200" data-categoria="aromaticas">
+            <img src="img/romero.jpg" alt="Romero" />
+            <h3>Romero</h3>
+            <p class="descripcion">Aromática resistente, ideal para exteriores.</p>
+            <p class="precio">$2200</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 10 -->
+          <article class="tarjeta-producto" data-id="10" data-nombre="Espatifilo" data-precio="3500" data-categoria="interior">
+            <img src="img/espatifilo.jpg" alt="Espatifilo" />
+            <h3>Espatifilo</h3>
+            <p class="descripcion">Planta purificadora del aire con elegantes flores blancas.</p>
+            <p class="precio">$3500</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 11 -->
+          <article class="tarjeta-producto" data-id="11" data-nombre="Monstera baby" data-precio="4500" data-categoria="interior">
+            <img src="img/monstera.jpg" alt="Monstera baby" />
+            <h3>Monstera baby</h3>
+            <p class="descripcion">Hojas con perforaciones pequeñas, ideal para interiores.</p>
+            <p class="precio">$4500</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 12 -->
+          <article class="tarjeta-producto" data-id="12" data-nombre="Rosa mini en maceta" data-precio="3100" data-categoria="rosas">
+            <img src="img/rosa-mini.jpg" alt="Rosa mini en maceta" />
+            <h3>Rosa mini en maceta</h3>
+            <p class="descripcion">Rosa pequeña ideal para interiores luminosos.</p>
+            <p class="precio">$3100</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 13 -->
+          <article class="tarjeta-producto" data-id="13" data-nombre="Rosa trepadora" data-precio="4800" data-categoria="rosas">
+            <img src="img/rosa-trepadora.jpg" alt="Rosa trepadora" />
+            <h3>Rosa trepadora</h3>
+            <p class="descripcion">Ideal para rejas o paredes, florece en cascada.</p>
+            <p class="precio">$4800</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 14 -->
+          <article class="tarjeta-producto" data-id="14" data-nombre="Rosa bicolor" data-precio="4100" data-categoria="rosas">
+            <img src="img/rosa-bicolor.jpg" alt="Rosa bicolor" />
+            <h3>Rosa bicolor</h3>
+            <p class="descripcion">Pétalos con dos tonos suaves, muy decorativa.</p>
+            <p class="precio">$4100</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 15 -->
+          <article class="tarjeta-producto" data-id="15" data-nombre="Cactus mix mini" data-precio="3300" data-categoria="cactus">
+            <img src="img/cactus-mix.jpg" alt="Cactus mix mini" />
+            <h3>Cactus mix mini</h3>
+            <p class="descripcion">Tres variedades de cactus pequeños en una sola maceta.</p>
+            <p class="precio">$3300</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 16 -->
+          <article class="tarjeta-producto" data-id="16" data-nombre="Cactus columna" data-precio="3600" data-categoria="cactus">
+            <img src="img/cactus-columna.jpg" alt="Cactus columna" />
+            <h3>Cactus columna</h3>
+            <p class="descripcion">Cactus alto y delgado, ideal para macetas grandes.</p>
+            <p class="precio">$3600</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 17 -->
+          <article class="tarjeta-producto" data-id="17" data-nombre="Cactus florido" data-precio="3900" data-categoria="cactus">
+            <img src="img/cactus-florido.jpg" alt="Cactus florido" />
+            <h3>Cactus florido</h3>
+            <p class="descripcion">Cactus pequeño que suele dar flores de colores.</p>
+            <p class="precio">$3900</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 18 -->
+          <article class="tarjeta-producto" data-id="18" data-nombre="Jade pequeño" data-precio="3100" data-categoria="suculentas">
+            <img src="img/jade.jpg" alt="Jade pequeño" />
+            <h3>Jade pequeño</h3>
+            <p class="descripcion">Suculenta de hojas gruesas, asociada a la buena suerte.</p>
+            <p class="precio">$3100</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 19 -->
+          <article class="tarjeta-producto" data-id="19" data-nombre="Albahaca" data-precio="2100" data-categoria="aromaticas">
+            <img src="img/albahaca.jpg" alt="Albahaca" />
+            <h3>Albahaca</h3>
+            <p class="descripcion">Aromática ideal para cocina, crece rápido.</p>
+            <p class="precio">$2100</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 20 -->
+          <article class="tarjeta-producto" data-id="20" data-nombre="Salvia" data-precio="2300" data-categoria="aromaticas">
+            <img src="img/salvia.jpg" alt="Salvia" />
+            <h3>Salvia</h3>
+            <p class="descripcion">Aromática resistente, con hojas plateadas y flores lilas.</p>
+            <p class="precio">$2300</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 21 -->
+          <article class="tarjeta-producto" data-id="21" data-nombre="Tomillo" data-precio="2200" data-categoria="aromaticas">
+            <img src="img/tomillo.jpg" alt="Tomillo" />
+            <h3>Tomillo</h3>
+            <p class="descripcion">Ideal para bordes de cantero, muy aromático.</p>
+            <p class="precio">$2200</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 22 -->
+          <article class="tarjeta-producto" data-id="22" data-nombre="Helecho colgante" data-precio="3200" data-categoria="interior">
+            <img src="img/helecho.jpg" alt="Helecho colgante" />
+            <h3>Helecho colgante</h3>
+            <p class="descripcion">Planta verde intensa ideal para estantes altos.</p>
+            <p class="precio">$3200</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 23 -->
+          <article class="tarjeta-producto" data-id="23" data-nombre="Peperomia" data-precio="2800" data-categoria="interior">
+            <img src="img/peperomia.jpg" alt="Peperomia" />
+            <h3>Peperomia</h3>
+            <p class="descripcion">Planta compacta, ideal para escritorios y mesas pequeñas.</p>
+            <p class="precio">$2800</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+          <!-- Producto 24 -->
+          <article class="tarjeta-producto" data-id="24" data-nombre="Drácena mini" data-precio="3600" data-categoria="interior">
+            <img src="img/dracena.jpg" alt="Drácena mini" />
+            <h3>Drácena mini</h3>
+            <p class="descripcion">Hojas largas, da un toque tropical al ambiente.</p>
+            <p class="precio">$3600</p>
+            <button class="btn-agregar">Agregar al carrito</button>
+          </article>
+
+        </div> <!-- cierre de .lista-productos -->
+      </section> <!-- cierre sección productos -->
+
+      <!-- CARRITO DESPLEGABLE -->
+      <aside class="carrito">
+        <button id="toggleCarrito" class="btn-confirmar">Ver carrito</button>
+
+        <div id="carritoContenido" class="carrito-contenido">
+          <h2>Carrito de compras</h2>
+          <ul id="lista-carrito"></ul>
+
+          <p class="total">Total: <span id="total">$0</span></p>
+
+          <h3>Datos del pedido</h3>
+          <form id="form-pedido">
+            <label>Nombre y apellido
+              <input type="text" id="nombre" required />
+            </label>
+
+            <label>Email
+              <input type="email" id="email" required />
+            </label>
+
+            <label>Dirección de entrega
+              <input type="text" id="direccion" required />
+            </label>
+
+            <button type="submit" class="btn-confirmar">Confirmar pedido</button>
+          </form>
+
+          <p id="mensaje-estado" class="mensaje-estado"></p>
+        </div>
+      </aside>
+
+    </div> <!-- cierre .contenedor -->
+  </main>
+
+  <!-- CONTACTO -->
+  <section class="contacto" id="contacto">
+    <h2>Contacto</h2>
+
+    <p class="texto-contacto">
+      ¿Tenés dudas sobre plantas o envíos? Escribinos:
+    </p>
+
+    <form class="form-contacto">
+      <label>Nombre
+        <input type="text" placeholder="Tu nombre" required />
+      </label>
+
+      <label>Email
+        <input type="email" placeholder="tucorreo@mail.com" required />
+      </label>
+
+      <label>Mensaje
+        <textarea placeholder="Escribí tu consulta..." required></textarea>
+      </label>
+
+      <button type="submit" class="btn-enviar">Enviar consulta</button>
+    </form>
+
+    <a class="btn-contacto-wpp" href="https://wa.me/5491130000000" target="_blank">
+      Consultar por WhatsApp
+    </a>
+  </section>
+  <!-- ---------- PEDIDOS GUARDADOS (VISTA ADMIN) ---------- -->
+<section class="pedidos-admin" id="pedidos-admin">
+  <h2>Pedidos recibidos</h2>
+
+  <button id="btn-ver-pedidos" class="btn-confirmar">
+    Ver pedidos guardados
+  </button>
+
+  <ul id="lista-pedidos"></ul>
+</section>
+
+
+  <!-- FOOTER -->
+  <footer class="pie">
+    <div class="footer-contenedor">
+
+      <div class="footer-columna">
+        <h3>Vivero Malena</h3>
+        <p>Plantas en tonos pastel, rosas y cactus.</p>
+        <p>Proyecto final de programación 🤓🌱</p>
+      </div>
+
+      <div class="footer-columna">
+        <h3>Horarios</h3>
+        <p>Lunes a Viernes 9:00–18:00</p>
+        <p>Sábados 9:00–13:00</p>
+      </div>
+
+      <div class="footer-columna">
+        <h3>Contacto</h3>
+        <p>Email: viveromalena@gmail.com</p>
+        <p>Instagram: @viveromalena</p>
+
+        <a class="btn-wpp" href="https://wa.me/5491130000000" target="_blank">
+          WhatsApp
+        </a>
+      </div>
+
+    </div>
+
+    <p class="footer-final">© 2025 Vivero Malena – Proyecto educativo</p>
+  </footer>
+<div id="toast" class="toast oculto"></div>
+  <script src="app.js"></script>
+</body>
+</html>
