@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
-
+// prueba github
   /* =============================
      CARRITO
   ============================== */
