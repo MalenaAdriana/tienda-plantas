@@ -31,25 +31,44 @@ document.addEventListener("DOMContentLoaded", () => {
   const botonesAgregar = document.querySelectorAll(".btn-agregar");
   const listaCarrito = document.getElementById("lista-carrito");
   const totalSpan = document.getElementById("total");
-  const toggleCarritoBtn = document.getElementById("toggleCarrito");
-  const carritoContenido = document.getElementById("carritoContenido");
+  const carritoFAB = document.getElementById("carritoFAB");
+  const carritoFABBadge = document.getElementById("carritoFABBadge");
+  const carritoOverlay = document.getElementById("carritoOverlay");
+  const carritoPanel = document.getElementById("carritoPanel");
+  const cerrarCarritoBtn = document.getElementById("cerrarCarrito");
   const formPedido = document.getElementById("form-pedido");
   const mensajeEstado = document.getElementById("mensaje-estado");
   const inputNombre = document.getElementById("nombre");
   const inputEmail = document.getElementById("email");
   const inputDireccion = document.getElementById("direccion");
 
-function actualizarCarrito() {
-  listaCarrito.innerHTML = "";
-  let total = 0;
+  function setCarritoAbierto(abierto) {
+    carritoPanel.classList.toggle("carrito-abierto", abierto);
+    carritoOverlay.classList.toggle("activo", abierto);
+    carritoPanel.setAttribute("aria-hidden", abierto ? "false" : "true");
+    carritoOverlay.setAttribute("aria-hidden", abierto ? "false" : "true");
+    carritoFAB.setAttribute("aria-expanded", abierto ? "true" : "false");
+    document.body.style.overflow = abierto ? "hidden" : "";
+  }
 
-  carrito.forEach((item) => {
-    const li = document.createElement("li");
+  function toggleCarritoPanel() {
+    const abierto = !carritoPanel.classList.contains("carrito-abierto");
+    setCarritoAbierto(abierto);
+  }
 
-    const subtotal = item.precio * item.cantidad;
-    total += subtotal;
+  function actualizarCarrito() {
+    listaCarrito.innerHTML = "";
+    let total = 0;
+    let cantidadTotal = 0;
 
-    li.innerHTML = `
+    carrito.forEach((item) => {
+      const li = document.createElement("li");
+
+      const subtotal = item.precio * item.cantidad;
+      total += subtotal;
+      cantidadTotal += item.cantidad;
+
+      li.innerHTML = `
       <span class="item-nombre">${item.nombre}</span>
 
       <div class="controles">
@@ -63,41 +82,58 @@ function actualizarCarrito() {
       <button type="button" class="btn-eliminar" data-id="${item.id}">X</button>
     `;
 
-    listaCarrito.appendChild(li);
+      listaCarrito.appendChild(li);
+    });
+
+    totalSpan.textContent = `$${total}`;
+
+    if (cantidadTotal > 0) {
+      carritoFABBadge.hidden = false;
+      carritoFABBadge.textContent = String(cantidadTotal);
+    } else {
+      carritoFABBadge.hidden = true;
+    }
+  }
+
+  listaCarrito.addEventListener("click", (e) => {
+    const btn = e.target.closest("button");
+    if (!btn) return;
+
+    const id = btn.dataset.id;
+    const prod = carrito.find(p => p.id === id);
+    if (!prod) return;
+
+    if (btn.classList.contains("btn-mas")) {
+      prod.cantidad++;
+      actualizarCarrito();
+      return;
+    }
+
+    if (btn.classList.contains("btn-menos")) {
+      prod.cantidad--;
+      if (prod.cantidad <= 0) {
+        carrito = carrito.filter(p => p.id !== id);
+      }
+      actualizarCarrito();
+      return;
+    }
+
+    if (btn.classList.contains("btn-eliminar")) {
+      carrito = carrito.filter(p => p.id !== id);
+      actualizarCarrito();
+      return;
+    }
   });
 
-  totalSpan.textContent = `$${total}`;
-}
-listaCarrito.addEventListener("click", (e) => {
-  const btn = e.target.closest("button");
-  if (!btn) return;
+  carritoFAB.addEventListener("click", () => toggleCarritoPanel());
+  cerrarCarritoBtn.addEventListener("click", () => setCarritoAbierto(false));
+  carritoOverlay.addEventListener("click", () => setCarritoAbierto(false));
 
-  const id = btn.dataset.id;
-  const prod = carrito.find(p => p.id === id);
-  if (!prod) return;
-
-  if (btn.classList.contains("btn-mas")) {
-    prod.cantidad++;
-    actualizarCarrito();
-    return;
-  }
-
-  if (btn.classList.contains("btn-menos")) {
-    prod.cantidad--;
-    if (prod.cantidad <= 0) {
-      carrito = carrito.filter(p => p.id !== id);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && carritoPanel.classList.contains("carrito-abierto")) {
+      setCarritoAbierto(false);
     }
-    actualizarCarrito();
-    return;
-  }
-
-  if (btn.classList.contains("btn-eliminar")) {
-    carrito = carrito.filter(p => p.id !== id);
-    actualizarCarrito();
-    return;
-  }
-});
-
+  });
 
   botonesAgregar.forEach(btn => {
     btn.addEventListener("click", e => {
@@ -115,16 +151,6 @@ listaCarrito.addEventListener("click", (e) => {
       setTimeout(() => btn.classList.remove("agregado"), 500);
     });
   });
-
-toggleCarritoBtn.addEventListener("click", () => {
-  carritoContenido.classList.toggle("mostrar");
-
-  toggleCarritoBtn.textContent =
-    carritoContenido.classList.contains("mostrar")
-      ? "Ocultar carrito"
-      : "Ver carrito";
-});
-
 
   /* =============================
      GUARDAR PEDIDO
@@ -159,6 +185,7 @@ toggleCarritoBtn.addEventListener("click", () => {
     formPedido.reset();
     carrito = [];
     actualizarCarrito();
+    setCarritoAbierto(false);
   });
 
   actualizarCarrito();

@@ -294,39 +294,49 @@
         </div> <!-- cierre de .lista-productos -->
       </section> <!-- cierre sección productos -->
 
-      <!-- CARRITO DESPLEGABLE -->
-      <aside class="carrito">
-        <button id="toggleCarrito" class="btn-confirmar">Ver carrito</button>
-
-        <div id="carritoContenido" class="carrito-contenido">
-          <h2>Carrito de compras</h2>
-          <ul id="lista-carrito"></ul>
-
-          <p class="total">Total: <span id="total">$0</span></p>
-
-          <h3>Datos del pedido</h3>
-          <form id="form-pedido">
-            <label>Nombre y apellido
-              <input type="text" id="nombre" required />
-            </label>
-
-            <label>Email
-              <input type="email" id="email" required />
-            </label>
-
-            <label>Dirección de entrega
-              <input type="text" id="direccion" required />
-            </label>
-
-            <button type="submit" class="btn-confirmar">Confirmar pedido</button>
-          </form>
-
-          <p id="mensaje-estado" class="mensaje-estado"></p>
-        </div>
-      </aside>
-
     </div> <!-- cierre .contenedor -->
   </main>
+
+  <!-- CARRITO: overlay + panel lateral + botón flotante -->
+  <div id="carritoOverlay" class="carrito-overlay" aria-hidden="true"></div>
+
+  <aside id="carritoPanel" class="carrito" aria-hidden="true">
+    <div class="carrito-panel-inner">
+      <header class="carrito-cabecera">
+        <h2 class="carrito-titulo">Carrito de compras</h2>
+        <button type="button" id="cerrarCarrito" class="btn-cerrar-carrito" aria-label="Cerrar carrito">×</button>
+      </header>
+      <div id="carritoContenido" class="carrito-contenido">
+        <ul id="lista-carrito"></ul>
+
+        <p class="total">Total: <span id="total">$0</span></p>
+
+        <h3>Datos del pedido</h3>
+        <form id="form-pedido">
+          <label>Nombre y apellido
+            <input type="text" id="nombre" required />
+          </label>
+
+          <label>Email
+            <input type="email" id="email" required />
+          </label>
+
+          <label>Dirección de entrega
+            <input type="text" id="direccion" required />
+          </label>
+
+          <button type="submit" class="btn-confirmar">Confirmar pedido</button>
+        </form>
+
+        <p id="mensaje-estado" class="mensaje-estado"></p>
+      </div>
+    </div>
+  </aside>
+
+  <button type="button" id="carritoFAB" class="carrito-fab" aria-label="Abrir carrito" aria-expanded="false">
+    <span class="carrito-fab-icon" aria-hidden="true">🛒</span>
+    <span id="carritoFABBadge" class="carrito-fab-badge" hidden>0</span>
+  </button>
 
   <!-- CONTACTO -->
   <section class="contacto" id="contacto">
