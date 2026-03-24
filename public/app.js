@@ -35,6 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const carritoContenido = document.getElementById("carritoContenido");
   const formPedido = document.getElementById("form-pedido");
   const mensajeEstado = document.getElementById("mensaje-estado");
+  const inputNombre = document.getElementById("nombre");
+  const inputEmail = document.getElementById("email");
+  const inputDireccion = document.getElementById("direccion");
 
 function actualizarCarrito() {
   listaCarrito.innerHTML = "";
@@ -143,9 +146,9 @@ toggleCarritoBtn.addEventListener("click", () => {
     const pedido = {
       fecha: new Date().toLocaleString(),
       cliente: {
-        nombre: nombre.value,
-        email: email.value,
-        direccion: direccion.value
+        nombre: inputNombre.value,
+        email: inputEmail.value,
+        direccion: inputDireccion.value
       },
       items: carrito
     };
@@ -166,6 +169,8 @@ toggleCarritoBtn.addEventListener("click", () => {
 const btnVerPedidos = document.getElementById("btn-ver-pedidos");
 const pedidosAdmin = document.getElementById("pedidos-admin");
 const listaPedidos = document.getElementById("lista-pedidos");
+
+pedidosAdmin.classList.add("mostrar");
 
 btnVerPedidos.addEventListener("click", () => {
   const abierto = listaPedidos.classList.toggle("mostrar");
