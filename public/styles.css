@@ -462,6 +462,13 @@ img {
   font-size: 0.9rem;
 }
 
+.carrito-aviso {
+  margin: 0 0 12px 0;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: #4a5f52;
+}
+
 /* Responsive contenedor */
 @media (max-width: 900px) {
   .contenedor {
@@ -851,44 +858,11 @@ img {
   font-weight: bold;
   cursor: pointer;
 }
-/* === VISTA ADMIN PEDIDOS === */
-#lista-pedidos {
-  list-style: none;
-  padding: 0;
-  margin-top: 15px;
-}
-
-.pedido-admin {
-  background-color: #ffffff;
-  border: 1px solid #e0f2e9;
-  border-radius: 8px;
-  padding: 12px;
-  margin-bottom: 15px;
-  font-size: 0.9rem;
-}
-
-.pedido-admin h4 {
-  margin-top: 0;
-  margin-bottom: 6px;
-  color: #2d6a4f;
-}
-
-.pedido-items {
-  list-style: disc;
-  margin-left: 20px;
-  margin-bottom: 8px;
-}
-
-.pedido-total {
-  font-weight: bold;
-  color: #1b4332;
-}
 /* ===== FIX ANCLAS NAV ===== */
 #inicio,
 #productos,
 #sobre,
-#contacto,
-#pedidos-admin {
+#contacto {
   scroll-margin-top: 90px; /* ajusta si tu navbar es más alta */
 }
 /* ===== ZOOM PRODUCTOS ===== */
@@ -901,50 +875,7 @@ img {
   transform: scale(1.15);
   z-index: 2;
 }
-.pedidos-admin ul {
-  display: none;
-  margin-top: 20px;
-}
-
-.pedidos-admin ul.mostrar {
-  display: block;
-}
-/* ===== ADMIN PEDIDOS ===== */
-.pedidos-admin {
-  display: none;
-  max-width: 900px;
-  margin: 40px auto;
-  background: #f1fbf5;
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
-
-.pedidos-admin.mostrar {
-  display: block;
-}
-
-#lista-pedidos li {
-  list-style: none;
-  background: #ffffff;
-  margin-bottom: 20px;
-  padding: 20px;
-  border-radius: 10px;
-  border-left: 6px solid #4caf7a;
-  line-height: 1.6;
-}
-
-#lista-pedidos hr {
-  border: none;
-  border-top: 1px solid #ddd;
-  margin-top: 15px;
-}
-
-#btn-ver-pedidos {
-  margin-bottom: 25px;
-}
-
-/* === Responsive: contacto, footer, admin, toast, filtros === */
+/* === Responsive: contacto, footer, toast, filtros === */
 @media (max-width: 768px) {
   .contacto {
     max-width: none;
@@ -965,19 +896,6 @@ img {
     max-width: 100%;
     box-sizing: border-box;
     text-align: center;
-  }
-
-  .pedidos-admin {
-    max-width: none;
-    width: auto;
-    margin: 32px clamp(12px, 4vw, 20px);
-    padding: clamp(16px, 4vw, 28px);
-    box-sizing: border-box;
-  }
-
-  #btn-ver-pedidos {
-    width: 100%;
-    box-sizing: border-box;
   }
 
   .footer-contenedor {

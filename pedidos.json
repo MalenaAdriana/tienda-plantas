@@ -1,0 +1,24 @@
+[
+  {
+    "fecha": "24/3/2026, 8:04:24 p.m.",
+    "cliente": {
+      "nombre": "ggg",
+      "email": "dd@hh.com",
+      "direccion": "sss88"
+    },
+    "items": [
+      {
+        "id": "9",
+        "nombre": "Romero",
+        "precio": 2200,
+        "cantidad": 1
+      },
+      {
+        "id": "8",
+        "nombre": "Menta",
+        "precio": 2000,
+        "cantidad": 1
+      }
+    ]
+  }
+]

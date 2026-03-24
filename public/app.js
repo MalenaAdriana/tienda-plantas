@@ -153,15 +153,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* =============================
-     GUARDAR PEDIDO
+     GUARDAR PEDIDO (servidor → pedidos.json)
   ============================== */
-  function guardarPedido(pedido) {
-    const pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
-    pedidos.push(pedido);
-    localStorage.setItem("pedidos", JSON.stringify(pedidos));
-  }
-
-  formPedido.addEventListener("submit", e => {
+  formPedido.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     if (carrito.length === 0) {
@@ -172,67 +166,37 @@ document.addEventListener("DOMContentLoaded", () => {
     const pedido = {
       fecha: new Date().toLocaleString(),
       cliente: {
-        nombre: inputNombre.value,
-        email: inputEmail.value,
-        direccion: inputDireccion.value
+        nombre: inputNombre.value.trim(),
+        email: inputEmail.value.trim(),
+        direccion: inputDireccion.value.trim()
       },
-      items: carrito
+      items: carrito.map((i) => ({ ...i }))
     };
 
-    guardarPedido(pedido);
+    mensajeEstado.textContent = "Enviando pedido…";
 
-    mensajeEstado.textContent = "Pedido guardado correctamente 🌿";
-    formPedido.reset();
-    carrito = [];
-    actualizarCarrito();
-    setCarritoAbierto(false);
+    try {
+      const res = await fetch("/api/pedidos", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(pedido)
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) {
+        throw new Error("fetch");
+      }
+
+      mensajeEstado.textContent = "¡Pedido recibido! Te contactamos pronto.";
+      formPedido.reset();
+      carrito = [];
+      actualizarCarrito();
+      setCarritoAbierto(false);
+    } catch {
+      mensajeEstado.textContent =
+        "No pudimos enviar el pedido ahora. Escribinos por WhatsApp con tu lista y datos de entrega.";
+    }
   });
 
   actualizarCarrito();
-
-/* =============================
-   ADMIN – VER PEDIDOS
-============================= */
-const btnVerPedidos = document.getElementById("btn-ver-pedidos");
-const pedidosAdmin = document.getElementById("pedidos-admin");
-const listaPedidos = document.getElementById("lista-pedidos");
-
-pedidosAdmin.classList.add("mostrar");
-
-btnVerPedidos.addEventListener("click", () => {
-  const abierto = listaPedidos.classList.toggle("mostrar");
-
-  btnVerPedidos.textContent = abierto
-    ? "Ocultar pedidos"
-    : "Ver pedidos guardados";
-
-  if (!abierto) {
-    listaPedidos.innerHTML = "";
-    return;
-  }
-
-  listaPedidos.innerHTML = "";
-
-  const pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
-
-  if (pedidos.length === 0) {
-    listaPedidos.innerHTML = "<li>No hay pedidos guardados</li>";
-    return;
-  }
-
-  pedidos.forEach((pedido, i) => {
-    const li = document.createElement("li");
-    li.innerHTML = `
-      <strong>Pedido ${i + 1}</strong><br>
-      Fecha: ${pedido.fecha}<br>
-      Cliente: ${pedido.cliente.nombre}<br>
-      Email: ${pedido.cliente.email}<br>
-      Dirección: ${pedido.cliente.direccion}<br>
-      Productos: ${pedido.items.length}
-      <hr>
-    `;
-    listaPedidos.appendChild(li);
-  });
-});
 
 });
