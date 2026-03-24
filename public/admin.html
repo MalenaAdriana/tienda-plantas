@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pedidos — Admin | Vivero Malena</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <nav class="admin-nav">
+    <h1>Pedidos recibidos</h1>
+    <a href="/">← Volver a la tienda</a>
+  </nav>
+
+  <div class="admin-toolbar">
+    <button type="button" id="btn-actualizar" class="btn-actualizar">Actualizar lista</button>
+  </div>
+
+  <p id="mensaje-estado" class="mensaje-admin" role="status" hidden></p>
+
+  <div id="lista-pedidos"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

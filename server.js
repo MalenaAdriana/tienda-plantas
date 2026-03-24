@@ -30,12 +30,24 @@ app.post("/api/pedidos", (req, res) => {
   res.json({ ok: true });
 });
 
-// ver pedidos
-app.get("/api/pedidos", (req, res) => {
+/** Si definís ADMIN_SECRET (variable de entorno), el listado de pedidos exige el header X-Admin-Key o ?key= */
+function requireAdmin(req, res, next) {
+  const secret = process.env.ADMIN_SECRET;
+  if (!secret) return next();
+  const key = req.headers["x-admin-key"] || req.query.key;
+  if (key !== secret) {
+    return res.status(401).json({ error: "No autorizado" });
+  }
+  next();
+}
+
+// ver pedidos (panel admin)
+app.get("/api/pedidos", requireAdmin, (req, res) => {
   const pedidos = JSON.parse(fs.readFileSync(PEDIDOS_FILE));
   res.json(pedidos);
 });
 
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`Tienda: http://localhost:${PORT}`);
+  console.log(`Admin pedidos: http://localhost:${PORT}/admin.html`);
 });
